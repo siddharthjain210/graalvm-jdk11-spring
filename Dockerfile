@@ -7,4 +7,5 @@ RUN mkdir /var/app
 COPY . /var/app/
 RUN  cd  /var/app \ 
     && ./mvnw install
+RUN chmod +x /var/app/entrypoint.sh
 ENTRYPOINT [ "/var/app/entrypoint.sh" ]
