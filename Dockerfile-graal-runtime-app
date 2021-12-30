@@ -1,6 +1,5 @@
 FROM rhel8-openjdk11-graal-native-base
 USER root
-
 RUN mkdir /var/app
 COPY . /var/app/
 RUN  cd  /var/app \ 

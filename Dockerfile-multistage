@@ -1,0 +1,13 @@
+FROM rhel8-openjdk11-graal-native-base as build
+USER root
+RUN mkdir /var/app
+COPY . /var/app/
+RUN  cd  /var/app \ 
+    && ./mvnw -Pnative -DskipTests package
+
+FROM openjdk:11-jre-slim-buster
+RUN mkdir /var/app
+COPY --from=build /var/app/target/demo-0.0.1-SNAPSHOT-exec.jar  /var/app/
+RUN ls -l /var/app
+RUN chmod +x /var/app/demo-0.0.1-SNAPSHOT-exec.jar
+CMD [ "java", "-DspringAot=true", "-jar", "/var/app/demo-0.0.1-SNAPSHOT-exec.jar"]

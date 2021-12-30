@@ -1,0 +1,6 @@
+FROM redhat/ubi8
+USER root
+RUN yum -y update
+RUN yum --disableplugin=subscription-manager -y install java-11-openjdk
+RUN java -version
+CMD ["java", "-version"]
