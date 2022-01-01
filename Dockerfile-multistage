@@ -7,7 +7,11 @@ RUN  cd  /var/app \
 
 FROM openjdk:11-jre-slim-buster
 RUN mkdir /var/app
-COPY --from=build /var/app/target/demo-0.0.1-SNAPSHOT-exec.jar  /var/app/
+COPY --from=build /var/app/target/*.jar  /var/app/
+COPY --from=build /var/app/target/demo  /var/app/
 RUN ls -l /var/app
-RUN chmod +x /var/app/demo-0.0.1-SNAPSHOT-exec.jar
-CMD [ "java", "-DspringAot=true", "-jar", "/var/app/demo-0.0.1-SNAPSHOT-exec.jar"]
+RUN chmod +x /var/app/*.jar
+RUN chmod +x /var/app/demo
+CMD [ "/var/app/demo"]
+
+# docker -v build  --tag mutistage -f Dockerfile-multistage .  --progress=plain

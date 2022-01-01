@@ -6,4 +6,6 @@ RUN  cd  /var/app \
     && ./mvnw -Pnative -DskipTests package
 RUN chmod +x /var/app/entrypoint.sh
 RUN chmod +x /var/app/target/demo-0.0.1-SNAPSHOT-exec.jar
-CMD [ "java", "-DspringAot=true", "-jar", "/var/app/target/demo-0.0.1-SNAPSHOT-exec.jar"]
+RUN ls -l --block-size=M /var/app/target 
+EXPOSE 8080
+CMD [ "/var/app/target/demo"]
