@@ -2,16 +2,17 @@ FROM rhel8-openjdk11-graal-native-base as build
 USER root
 RUN mkdir /var/app
 COPY . /var/app/
-RUN  cd  /var/app \ 
+RUN  cd /var/app \ 
     && ./mvnw -Pnative -DskipTests package
 
 FROM openjdk:11-jre-slim-buster
 RUN mkdir /var/app
 COPY --from=build /var/app/target/*.jar  /var/app/
+COPY --from=build /var/app/target/*.zip  /var/app/
 COPY --from=build /var/app/target/demo  /var/app/
-RUN ls -l /var/app
-RUN chmod +x /var/app/*.jar
-RUN chmod +x /var/app/demo
+RUN ls -l /var/app \
+    && chmod +x /var/app/*.jar \
+    && chmod +x /var/app/demo
 CMD [ "/var/app/demo"]
 
 # docker -v build  --tag mutistage -f Dockerfile-multistage .  --progress=plain
