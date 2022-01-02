@@ -3,9 +3,9 @@ Transform: AWS::Serverless-2016-10-31
 Description: Example Graal Demo API written with SpringBoot with the aws-serverless-java-container library
 
 Globals:
-  Api:
-    # API Gateway regional endpoints
-    EndpointConfiguration: REGIONAL
+    Function:
+        Timeout: 10
+        MemorySize: 512
 
 Resources:
   HelloGraalFunction:
@@ -16,17 +16,15 @@ Resources:
       CodeUri: ./target/demo-0.0.1-SNAPSHOT-native-zip.zip
       MemorySize: 512
       Policies: AWSLambdaBasicExecutionRole
-      Timeout: 30
+      Timeout: 10
       Events:
-        HttpApiEvent:
-          Type: HttpApi
+        GetHello:
+          Type: Api
           Properties:
-            TimeoutInMillis: 20000
-            PayloadFormatVersion: '1.0'
+            Path: /
+            Method: get
 
 Outputs:
-  GraalDemoApiGW:
-    Description: URL for application
-    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/graalvmdemo'
-    Export:
-      Name: GraalDemoApi
+    HelloWorldApi:
+      Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+      Value: !Sub "https://${ServerlessRestApi}.execute-api.us-east-2.amazonaws.com/hello/"

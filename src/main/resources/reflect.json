@@ -1,0 +1,80 @@
+[
+	{
+		"name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent",
+		"methods": [{ "name": "<init>", "parameterTypes": [] }],
+		"allDeclaredConstructors": true,
+		"allPublicConstructors": true,
+		"allDeclaredMethods": true,
+		"allPublicMethods": true
+	},
+	{
+		"name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent$ProxyRequestContext",
+		"methods": [{ "name": "<init>", "parameterTypes": [] }],
+		"allDeclaredConstructors": true,
+		"allPublicConstructors": true,
+		"allDeclaredMethods": true,
+		"allPublicMethods": true
+	},
+	{
+		"name": "com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent$RequestIdentity",
+		"methods": [{ "name": "<init>", "parameterTypes": [] }],
+		"allDeclaredConstructors": true,
+		"allPublicConstructors": true,
+		"allDeclaredMethods": true,
+		"allPublicMethods": true
+	},
+	{
+		"name": "com.amazonaws.serverless.proxy.model.AwsProxyRequest",
+		"methods": [{ "name": "<init>", "parameterTypes": [] }],
+		"allDeclaredConstructors": true,
+		"allPublicConstructors": true,
+		"allDeclaredMethods": true,
+		"allPublicMethods": true
+	},
+	{
+		"name": "com.amazonaws.serverless.proxy.model.AwsProxyRequestContext",
+		"methods": [{ "name": "<init>", "parameterTypes": [] }],
+		"allDeclaredConstructors": true,
+		"allPublicConstructors": true,
+		"allDeclaredMethods": true,
+		"allPublicMethods": true
+	},
+	{
+		"name": "com.amazonaws.serverless.proxy.model.AwsProxyResponse",
+		"methods": [{ "name": "<init>", "parameterTypes": [] }],
+		"allDeclaredConstructors": true,
+		"allPublicConstructors": true,
+		"allDeclaredMethods": true,
+		"allPublicMethods": true
+	},
+	{
+		"name": "com.amazonaws.serverless.proxy.model.ApiGatewayRequestIdentity",
+		"methods": [{ "name": "<init>", "parameterTypes": [] }],
+		"allDeclaredConstructors": true,
+		"allPublicConstructors": true,
+		"allDeclaredMethods": true,
+		"allPublicMethods": true
+	},
+	{
+		"name": "com.amazonaws.serverless.proxy.model.ApiGatewayAuthorizerContext",
+		"methods": [{ "name": "<init>", "parameterTypes": [] }],
+		"allDeclaredConstructors": true,
+		"allPublicConstructors": true,
+		"allDeclaredMethods": true,
+		"allPublicMethods": true
+	},
+	{
+		"name": "com.graalvm.demo.HelloResponse",
+		"allDeclaredConstructors": true,
+		"allPublicConstructors": true,
+		"allDeclaredMethods": true,
+		"allPublicMethods": true
+	},
+	{
+		"name": "com.graalvm.demo.HelloRequest",
+		"allDeclaredConstructors": true,
+		"allPublicConstructors": true,
+		"allDeclaredMethods": true,
+		"allPublicMethods": true
+	}
+]

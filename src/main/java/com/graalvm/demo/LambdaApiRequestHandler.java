@@ -5,12 +5,12 @@ import com.amazonaws.serverless.proxy.model.AwsProxyRequest;
 import com.amazonaws.serverless.proxy.model.AwsProxyResponse;
 import com.amazonaws.serverless.proxy.spring.SpringBootLambdaContainerHandler;
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
+import lombok.extern.slf4j.Slf4j;
 
-public class LambdaApiRequestHandler implements RequestStreamHandler {
+@Slf4j
+public class LambdaApiRequestHandler
+  implements RequestHandler<AwsProxyRequest, AwsProxyResponse> {
   private static SpringBootLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler;
 
   static {
@@ -32,12 +32,11 @@ public class LambdaApiRequestHandler implements RequestStreamHandler {
   }
 
   @Override
-  public void handleRequest(
-    InputStream inputStream,
-    OutputStream outputStream,
+  public AwsProxyResponse handleRequest(
+    AwsProxyRequest input,
     Context context
-  )
-    throws IOException {
-    handler.proxyStream(inputStream, outputStream, context);
+  ) {
+    log.info("inside Request Handler");
+    return handler.proxy(input, context);
   }
 }
