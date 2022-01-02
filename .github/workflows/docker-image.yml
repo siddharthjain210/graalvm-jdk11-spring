@@ -1,0 +1,20 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ feature/graal-spring-native-java11 ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker base image
+      run: docker build . --file Dockerfile-rhel8-openjdk11-graal-base --tag Dockerfile-rhel8-openjdk11-graal-base:latest
+    - name: Build the Docker runtime image
+      run: docker build . --file Dockerfile-multistage --tag Dockerfile-multistage:latest
