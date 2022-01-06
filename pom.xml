@@ -44,6 +44,12 @@
             <groupId>com.amazonaws.serverless</groupId>
             <artifactId>aws-serverless-java-container-springboot2</artifactId>
             <version>1.6</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.module</groupId>
+                    <artifactId>jackson-module-afterburner</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -61,6 +67,18 @@
             <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.32</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.32</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -161,6 +179,7 @@
                                 <buildArg>--enable-url-protocols=http,https</buildArg>
                                 <buildArg>--no-fallback</buildArg>
                                 <buildArg>-H:ReflectionConfigurationFiles=classes/reflect.json</buildArg>
+                                <buildArg>--initialize-at-build-time=org.slf4j</buildArg>
                             </buildArgs>
 <!--                            <classpath>-->
 <!--                                <param>${project.build.directory}/${project.artifactId}-${project.version}-shaded.jar</param>-->

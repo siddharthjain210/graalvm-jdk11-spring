@@ -13,8 +13,8 @@ Resources:
     Properties:
       Handler: com.graalvm.demo.lambda.LambdaApiRequestHandler::handleRequest
       Runtime: provided
-      CodeUri: target/Archive.zip
-#      CodeUri: target/demo-0.0.1-SNAPSHOT-native-zip.zip
+#      CodeUri: target/Archive.zip
+      CodeUri: target/demo-0.0.1-SNAPSHOT-native-zip.zip
       Architectures:
         - x86_64
       MemorySize: 512

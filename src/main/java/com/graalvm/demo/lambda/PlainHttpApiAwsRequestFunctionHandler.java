@@ -4,9 +4,9 @@ import com.amazonaws.serverless.proxy.model.AwsProxyResponse;
 import com.amazonaws.serverless.proxy.model.HttpApiV2ProxyRequest;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
-@Log4j2
+@Slf4j
 public class PlainHttpApiAwsRequestFunctionHandler
   implements RequestHandler<HttpApiV2ProxyRequest, AwsProxyResponse> {
 

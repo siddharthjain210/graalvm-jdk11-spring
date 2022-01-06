@@ -7,9 +7,9 @@ import com.amazonaws.serverless.proxy.spring.SpringBootLambdaContainerHandler;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.graalvm.demo.DemoApplication;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
-@Log4j2
+@Slf4j
 public class LambdaContainerHttpApiRequestFunction
   implements RequestHandler<HttpApiV2ProxyRequest, AwsProxyResponse> {
   private static SpringBootLambdaContainerHandler<HttpApiV2ProxyRequest, AwsProxyResponse> handler;

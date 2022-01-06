@@ -1,4 +1,5 @@
 #!/bin/sh
 set -euo pipefail
 cd ${LAMBDA_TASK_ROOT:-.}
+printenv
 ./demo com.graalvm.demo.lambda.LambdaApiRequestHandler::handleRequest
