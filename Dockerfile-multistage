@@ -5,7 +5,7 @@ COPY . /var/app/
 RUN  cd /var/app \ 
     && ./mvnw -Pnative -DskipTests package
 
-FROM openjdk:11-jre-slim-buster
+FROM redhat/ubi8
 RUN mkdir /var/app
 COPY --from=build /var/app/target/*.jar  /var/app/
 COPY --from=build /var/app/target/*.zip  /var/app/
@@ -13,6 +13,6 @@ COPY --from=build /var/app/target/demo  /var/app/
 RUN ls -l /var/app \
     && chmod +x /var/app/*.jar \
     && chmod +x /var/app/demo
-CMD [ "/var/app/demo"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 # docker -v build  --tag mutistage -f Dockerfile-multistage .  --progress=plain

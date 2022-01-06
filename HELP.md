@@ -13,3 +13,9 @@ docker -v build  --tag mutistage -f Dockerfile-multistage .  --progress=plain
 
 3. Deployment to AWS
 sam deploy --debug  -t template.yml --stack-name graaldemo --resolve-s3 --capabilities CAPABILITY_IAM
+
+
+# Building the runtime docker Image with aws serverless container. 
+docker -v build  --tag mutistage-serverless -f Dockerfile-multistage .  --progress=plain
+
+export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.3.0/Contents/Home/
