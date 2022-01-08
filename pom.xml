@@ -30,6 +30,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,12 +50,12 @@
             <groupId>com.amazonaws.serverless</groupId>
             <artifactId>aws-serverless-java-container-springboot2</artifactId>
             <version>1.6</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.fasterxml.jackson.module</groupId>
-                    <artifactId>jackson-module-afterburner</artifactId>
-                </exclusion>
-            </exclusions>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>com.fasterxml.jackson.module</groupId>-->
+<!--                    <artifactId>jackson-module-afterburner</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -78,7 +84,12 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.32</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.graalvm.nativeimage</groupId>
+            <artifactId>svm</artifactId>
+            <version>21.3.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -123,9 +134,9 @@
             </dependencies>
             <build>
                 <plugins>
-<!--                    <plugin>-->
-<!--                        <groupId>org.apache.maven.plugins</groupId>-->
-<!--                        <artifactId>maven-shade-plugin</artifactId>-->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
 <!--                        <dependencies>-->
 <!--                            <dependency>-->
 <!--                                <groupId>org.springframework.boot</groupId>-->
@@ -133,25 +144,22 @@
 <!--                                <version>2.6.2</version>-->
 <!--                            </dependency>-->
 <!--                        </dependencies>-->
-<!--                        <configuration>-->
-<!--                            <shadedArtifactAttached>true</shadedArtifactAttached>-->
-<!--                        </configuration>-->
-<!--                        <executions>-->
-<!--                            <execution>-->
-<!--                                <phase>package</phase>-->
-<!--                                <goals>-->
-<!--                                    <goal>shade</goal>-->
-<!--                                </goals>-->
-<!--                                <configuration>-->
-<!--                                    <artifactSet>-->
-<!--                                        <excludes>-->
-<!--                                            <exclude>org.apache.tomcat.embed:*</exclude>-->
-<!--                                        </excludes>-->
-<!--                                    </artifactSet>-->
-<!--                                </configuration>-->
-<!--                            </execution>-->
-<!--                        </executions>-->
-<!--                    </plugin>-->
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactSet>
+                                        <excludes>
+                                            <exclude>org.apache.tomcat.embed:*</exclude>
+                                        </excludes>
+                                    </artifactSet>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
                     <plugin>
                         <groupId>org.graalvm.buildtools</groupId>
                         <artifactId>native-maven-plugin</artifactId>
@@ -180,6 +188,8 @@
                                 <buildArg>--no-fallback</buildArg>
                                 <buildArg>-H:ReflectionConfigurationFiles=classes/reflect.json</buildArg>
                                 <buildArg>--initialize-at-build-time=org.slf4j</buildArg>
+<!--                                <buildArg>&#45;&#45;initialize-at-build-time=com.amazonaws.serverless.proxy.internal.LambdaContainerHandler</buildArg>-->
+<!--                                <buildArg>&#45;&#45;initialize-at-build-time=com.graalvm.demo.substitute.LambdaContainerHandlerSubstitute</buildArg>-->
                             </buildArgs>
 <!--                            <classpath>-->
 <!--                                <param>${project.build.directory}/${project.artifactId}-${project.version}-shaded.jar</param>-->

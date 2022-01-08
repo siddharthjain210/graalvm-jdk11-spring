@@ -217,5 +217,25 @@
     "allPublicMethods" : true,
     "allDeclaredClasses" : true,
     "allPublicClasses" : true
+  },
+  {
+    "name": "com.amazonaws.serverless.proxy.spring.AwsLambdaServletContainerHandler",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true
+  },
+  {
+    "name": "com.amazonaws.serverless.proxy.spring.LambdaContainerHandler",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allPublicConstructors": true,
+    "allDeclaredMethods": true,
+    "allPublicMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicClasses": true
   }
 ]

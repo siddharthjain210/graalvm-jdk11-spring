@@ -13,7 +13,7 @@ Resources:
     Properties:
       Handler: com.graalvm.demo.lambda.LambdaApiRequestHandler::handleRequest
       Runtime: provided
-#      CodeUri: target/Archive.zip
+
       CodeUri: target/demo-0.0.1-SNAPSHOT-native-zip.zip
       Architectures:
         - x86_64
@@ -26,51 +26,21 @@ Resources:
           Properties:
             Path: /
             Method: GET
-#  LambdaHttpApiRequestFunction:
-#    Type: AWS::Serverless::Function
-#    Properties:
-#      Handler: com.graalvm.demo.lambda.LambdaContainerHttpApiRequestFunction::handleRequest
-#      Runtime: provided
-#      CodeUri: ../default/run3/demo-0.0.1-SNAPSHOT-native-zip.zip
-#      MemorySize: 512
-#      Policies: AWSLambdaBasicExecutionRole
-#      Timeout: 10
-#      Events:
-#        GetHelloD:
-#          Type: Api
-#          Properties:
-#            Path: /b
-#            Method: GET
-#  PlainRestAPIRequestFunction:
-#    Type: AWS::Serverless::Function
-#    Properties:
-#      Handler: com.graalvm.demo.lambda.PlainRestAPIRequestFunctionHandler::handleRequest
-#      Runtime: provided
-#      CodeUri: ../default/run3/demo-0.0.1-SNAPSHOT-native-zip.zip
-#      MemorySize: 512
-#      Policies: AWSLambdaBasicExecutionRole
-#      Timeout: 10
-#      Events:
-#        GetHelloC:
-#          Type: Api
-#          Properties:
-#            Path: /c
-#            Method: GET
-#  PlainHttpApiAwsRequestFunction:
-#    Type: AWS::Serverless::Function
-#    Properties:
-#      Handler: com.graalvm.demo.lambda.PlainHttpApiAwsRequestFunctionHandler::handleRequest
-#      Runtime: provided
-#      CodeUri: ../default/run3/demo-0.0.1-SNAPSHOT-native-zip.zip
-#      MemorySize: 512
-#      Policies: AWSLambdaBasicExecutionRole
-#      Timeout: 10
-#      Events:
-#        GetHelloD:
-#          Type: Api
-#          Properties:
-#            Path: /d
-#            Method: GET
+  PlainRestAPIRequestFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.graalvm.demo.lambda.PlainRestAPIRequestFunctionHandler::handleRequest
+      Runtime: provided
+      CodeUri: target/Archive.zip
+      MemorySize: 512
+      Policies: AWSLambdaBasicExecutionRole
+      Timeout: 10
+      Events:
+        GetHelloC:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: GET
 
 Outputs:
     HelloWorldApi:
